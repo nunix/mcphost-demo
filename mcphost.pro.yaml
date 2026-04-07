@@ -1,0 +1,38 @@
+# MCPHost Configuration File
+# All command-line flags can be configured here
+
+# MCP Servers configuration
+
+# Application settings
+model: "google:gemini-3.1-pro-preview" 
+max-steps: 20
+debug: false
+quiet: true
+
+system-prompt: /home/user/mcphost/system-prompt.md
+
+# API Configuration
+mcpServers:
+  filesystem_ro:
+    type: builtin
+    name: fs
+    options:
+      allowed_directories: ["/etc", "/tmp", "/usr/lib", "/usr/etc", "/proc", "/home/user"]
+      allowedTools: ["read_file", "list_directory"]
+  filesystem_rw:
+    type: builtin
+    name: fs
+    options:
+      allowed_directories: ["/home/user", "/home/user/.hal_memory"]
+      allowedTools: ["write_file", "read_file", "list_directory"]
+
+  bash-commands:
+    type: builtin
+    name: bash
+  web-fetcher:
+    type: builtin
+    name: http
+  systemd:
+    command: mcp-server-systemd
+  prompt:
+    command: mcp-server-user-prompt
