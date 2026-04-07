@@ -57,6 +57,9 @@ cp mcphost.minimal.yaml ~/mcphost/.mcphost.minimal.yaml
 # Copy the system prompts (the true core of HAL's personality)
 cp system-prompt.md ~/mcphost/
 cp system-prompt-minimal.md ~/mcphost/
+
+# Initialize the memory brain
+cp -r .hal_memory ~/
 ```
 
 ## Chapter 5: Teaching the Shell
