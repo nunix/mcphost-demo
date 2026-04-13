@@ -5,7 +5,7 @@
 
 # Application settings
 model: "google:gemini-3.1-pro-preview" 
-max-steps: 40
+max-steps: 60
 debug: false
 quiet: true
 
