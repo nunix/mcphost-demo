@@ -1,0 +1,21 @@
+model: "google/gemini-3.1-flash-light"
+max-steps: 60
+debug: false
+quiet: true
+system-prompt: /home/nunix/mcphost/minihalkit-system-prompt.md
+
+# Make outputs safer for system administration
+temperature: 0.2
+maxTokens: 8192
+
+mcpServers:
+  systemd:
+    type: local
+    command: ["mcp-server-systemd"]
+  prompt:
+    type: local
+    command: ["mcp-server-user-prompt"]
+
+subagent:
+  model: "google/gemini-3.1-flash-light"
+  system-prompt: "/home/nunix/mcphost/minihalkit-system-prompt.md"

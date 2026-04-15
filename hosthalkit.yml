@@ -1,0 +1,21 @@
+model: "ollama/qwen2.5-coder:7b"
+max-steps: 30
+debug: false
+quiet: true
+system-prompt: /home/nunix/mcphost/system-prompt.md
+
+# Make outputs safer for system administration
+temperature: 0.2
+maxTokens: 8192
+
+mcpServers:
+  systemd:
+    type: local
+    command: ["mcp-server-systemd"]
+  prompt:
+    type: local
+    command: ["mcp-server-user-prompt"]
+
+subagent:
+  model: "ollama/qwen2.5-coder:1.5b"
+  system-prompt: "/home/nunix/mcphost/minihalkit-system-prompt.md"

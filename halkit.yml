@@ -1,0 +1,20 @@
+model: "google/gemini-3.1-pro-preview"
+max-steps: 30
+debug: false
+quiet: true
+system-prompt: /home/nunix/mcphost/system-prompt.md
+
+# Make outputs safer for system administration
+temperature: 0.2
+maxTokens: 8192
+
+mcpServers:
+  systemd:
+    type: local
+    command: ["mcp-server-systemd"]
+  prompt:
+    type: local
+    command: ["mcp-server-user-prompt"]
+
+subagent:
+  model: "google/gemini-3.1-flash-light"
