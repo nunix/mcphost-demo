@@ -5,11 +5,12 @@
 
 # Application settings
 model: "google:gemini-3.1-pro-preview" 
-max-steps: 60
+max-tokens: 8192
+max-steps: 40
 debug: false
 quiet: true
 
-system-prompt: /home/user/mcphost/system-prompt.md
+system-prompt: /home/nunix/mcphost/system-prompt.md
 
 # API Configuration
 mcpServers:
@@ -17,13 +18,13 @@ mcpServers:
     type: builtin
     name: fs
     options:
-      allowed_directories: ["/etc", "/tmp", "/usr/lib", "/usr/etc", "/proc", "/home/user"]
+      allowed_directories: ["/etc", "/tmp", "/usr/lib", "/usr/etc", "/proc", "/home/nunix"]
       allowedTools: ["read_file", "list_directory"]
   filesystem_rw:
     type: builtin
     name: fs
     options:
-      allowed_directories: ["/home/user", "/home/user/.hal_memory"]
+      allowed_directories: ["/home/nunix", "/home/nunix/.hal_memory"]
       allowedTools: ["write_file", "read_file", "list_directory"]
 
   bash-commands:
@@ -36,3 +37,7 @@ mcpServers:
     command: mcp-server-systemd
   prompt:
     command: mcp-server-user-prompt
+
+subagent:
+  model: "google:gemini-3.1-flash-lite-preview"
+  system-prompt: "/home/nunix/mcphost/minihalkit-system-prompt.md"
