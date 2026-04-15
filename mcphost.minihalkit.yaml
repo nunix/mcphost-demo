@@ -1,0 +1,43 @@
+# MCPHost Configuration File
+# All command-line flags can be configured here
+
+# MCP Servers configuration
+
+# Application settings
+model: "google:gemini-3.1-flash-lite-preview" 
+max-tokens: 8192
+max-steps: 60
+debug: false
+quiet: true
+
+system-prompt: /home/nunix/mcphost/minihalkit-system-prompt.md
+
+# API Configuration
+mcpServers:
+  filesystem_ro:
+    type: builtin
+    name: fs
+    options:
+      allowed_directories: ["/etc", "/tmp", "/usr/lib", "/usr/etc", "/proc", "/home/nunix"]
+      allowedTools: ["read_file", "list_directory"]
+  filesystem_rw:
+    type: builtin
+    name: fs
+    options:
+      allowed_directories: ["/home/nunix", "/home/nunix/.hal_memory"]
+      allowedTools: ["write_file", "read_file", "list_directory"]
+
+  bash-commands:
+    type: builtin
+    name: bash
+  web-fetcher:
+    type: builtin
+    name: http
+  systemd:
+    command: mcp-server-systemd
+  prompt:
+    command: mcp-server-user-prompt
+
+subagent:
+  model: "google:gemini-3.1-flash-lite-preview"
+  system-prompt: "/home/nunix/mcphost/minihalkit-system-prompt.md"
